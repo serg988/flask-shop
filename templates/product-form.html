@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block sub_content %}
+<div class="text-center">
+    <h1>Ввод товаров</h1>
+</div>
+<div class="p-5">
+<form method='POST'>
+  
+  <div class="form-group mb-3">
+    <label for="category">Категория</label>
+    <input type="text" class="form-control" id="category" name="category" placeholder="Категория товара">
+  </div>
+  
+  <div class="form-group mb-3">
+    <label for="product_name">Название</label>
+    <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Название товара">
+  </div> 
+  <div class="form-group mb-3">
+    <label for="quantity">Количество</label>
+    <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Введите количество в наличие"> 
+  </div> 
+  <div class="form-group mb-3">
+    <label for="price">Цена</label>
+    <input type="text" class="form-control" id="price" name="price" placeholder="Введите цену">   
+  </div>
+  <div class="form-group mb-3">
+    <label for="image">Адрес изображения</label>
+    <input type="text" class="form-control" id="image" name="image" placeholder="Введите адрес изображения">
+  </div>
+  <button type="submit" class="btn btn-primary">Отправить</button>
+</form>
+</div>
+{% endblock sub_content %}
+

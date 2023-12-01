@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block sub_content %}
+<div class="container my-5 d-flex flex-wrap justify-content-around">
+{% for product in products %}
+<div class="card bg-light-subtle" style="width: 18rem;">
+  <img width=100 src={{product['image']}} class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{product['category']}}</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Название: {{product['product_name']}}</li>
+    <li class="list-group-item">Цена: {{product['price']}}</li>
+    <li class="list-group-item">Количество: {{product['quantity']}}</li>
+  </ul>
+ <a href="#" class="btn btn-primary">Купить</a>
+</div>
+{% endfor %}
+</div>
+
+
+{% endblock sub_content %}

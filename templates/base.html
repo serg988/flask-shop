@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block styles %}
+        <!-- Bootstrap CSS -->
+{{ bootstrap.load_css() }}
+{% endblock %}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
+<title>Магазин</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block navbar %}
+{% include "_navbar.html" %}
+{% endblock navbar %}
+</head>
+<body>
+    {% block content %}
+
+    {%with messages = get_flashed_messages(with_categories=true)%}
+    {% if messages%}
+    <div style="margin-left:-2.5rem">
+        <ul>
+            {% for category, message in messages%}
+            <li class="list-group text-center alert alert-{{category}}"> {{message}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+        
+    {% endif %}
+    {% endwith %}
+    {% block sub_content %}
+    
+    {% endblock sub_content %}
+    {% block footer %}
+    {% include "_footer.html" %}
+    {% endblock footer %}
+    {% endblock content %}
+</body>
+</html>
