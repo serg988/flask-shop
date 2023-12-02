@@ -2,7 +2,7 @@
 {% block sub_content %}
 <div class="container my-5 d-flex flex-wrap justify-content-around">
 {% for product in products %}
-<div class="card bg-light-subtle" style="width: 18rem;">
+<div class="card bg-light-subtle my-3" style="width: 18rem;">
   <img width=100 src={{product['image']}} class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{product['category']}}</h5>
@@ -13,6 +13,11 @@
     <li class="list-group-item">Количество: {{product['quantity']}}</li>
   </ul>
  <a href="#" class="btn btn-primary">Купить</a>
+{% if session.is_admin %}
+<form action="/product-form" method="POST">
+  <input class="btn btn-danger btn-block" type="submit" value="DELETE{{product['product_id']}}" name="del">
+</form>
+{% endif %}
 </div>
 {% endfor %}
 </div>
