@@ -71,18 +71,7 @@ def login_required(f):
 @login_required
 def index():
     products = Product.query.all()
-    cats = set([cat.category for cat in products])
-    return render_template('products.html', products=products, cats=cats)
-
-
-@app.route('/products/<cat>')
-@login_required
-def products(cat):
-    products = Product.query.all()
-    cats = set([cat.category for cat in products])
-    filtered_products = products = Product.query.filter(
-        Product.category == cat)
-    return render_template('products.html', products=filtered_products, cats=cats)
+    return render_template('products.html', products=products)
 
 
 @app.route('/login/', methods=['GET', 'POST'])
@@ -135,8 +124,7 @@ def register():
 @app.route('/product-form', methods=['GET', 'POST'])
 def product_form():
     if request.method == 'POST' and request.form.get('del'):
-        Product.query.filter(Product.product_id ==
-                             request.form['del'][6:]).delete()
+        Product.query.filter(Product.product_id == request.form['del'][6:]).delete()
         db.session.commit()
         return redirect('/')
     elif request.method == 'POST':

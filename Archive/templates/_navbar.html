@@ -24,16 +24,6 @@
 
     </ul>
     <ul class="navbar-nav ms-auto">
-      <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Категории
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            {% for cat in cats %}
-            <li><a class="dropdown-item" href="{{ url_for('products', cat=cat) }}">{{cat}}</a></li>
-            {% endfor %}
-          </ul>
-        </li>
     {% if session.login %}
       <li class="nav-item ml-auto">
         <a class="nav-link" href="/logout">Выйти</a>

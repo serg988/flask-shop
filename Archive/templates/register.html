@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block sub_content %}
+<div class="text-center mt-3">
+    <h1>Регистрация</h1>
+</div>
+<div class="p-5">
+<form method='POST'>
+  <div class="form-group">
+    <label for="firstname">Имя</label>
+    <input required type="text" class="form-control" id="firstname" name="firstname" placeholder="Введите имя">
+  </div> <div class="form-group">
+    <label for="lastname">Фамилия</label>
+    <input required type="text" class="form-control" id="lastname" name="lastname" placeholder="Введите фамилию"> 
+  </div> <div class="form-group">
+    <label for="username">Имя на сайте</label>
+    <input required type="text" class="form-control" id="username" name="username" placeholder="Введите никнейм">   
+  </div>
+  <div class="form-group">
+    <label for="email">Email адрес</label>
+    <input required type="email" class="form-control" id="email" name="email" placeholder="Введите email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="password">Пароль</label>
+    <input required type="password" class="form-control" id="password" name="password" placeholder="Пароль">
+  </div>
+  <div class="form-group">
+    <label for="confirmPassword">Подтвердите пароль</label>
+    <input required type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Пароль">
+  </div>
+  <div class="text-center mt-2">
+    <button type="submit" class="btn btn-primary">Отправить</button>
+  </div>
+</form>
+</div>
+{% endblock sub_content %}
