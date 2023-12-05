@@ -134,12 +134,7 @@ def register():
 
 @app.route('/product-form', methods=['GET', 'POST'])
 def product_form():
-    if request.method == 'POST' and request.form.get('del'):
-        Product.query.filter(Product.product_id ==
-                             request.form['del'][6:]).delete()
-        db.session.commit()
-        return redirect('/')
-    elif request.method == 'POST':
+    if request.method == 'POST':
         product = Product(
             category=request.form["category"],
             product_name=request.form["product_name"],
@@ -150,8 +145,17 @@ def product_form():
         db.session.add(product)
         db.session.commit()
         flash("Товар добавлен!", 'success')
-        return redirect('/product-form')
+        return redirect('/')
     return render_template('product-form.html')
+
+
+@app.route('/delete/<id>', methods=['GET', 'POST'])
+def delete(id):
+    Product.query.filter(Product.product_id == id).delete()
+    db.session.commit()
+    products = Product.query.all()
+    cats = set([cat.category for cat in products])
+    return render_template('products.html', products=products, cats=cats)
 
 
 @app.route('/about')

@@ -18,8 +18,10 @@
 {% endif %}
 
 {% if session.is_admin %}
-<form action="/product-form" method="POST">
-  <input class="btn btn-danger" type="submit" value="DELETE{{product['product_id']}}" name="del">
+<form action="{{ url_for('delete', id=product['product_id']) }}" method="POST">
+    <div>
+      <input class="btn btn-danger d-block" style="width: 18rem" type="submit" value="Удалить">
+    </div>
 </form>
 {% endif %}
   </div>
