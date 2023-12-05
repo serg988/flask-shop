@@ -8,15 +8,9 @@
 <title>Магазин</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
-<body style="background-color: #eee">
-{% block navbar %}
-{% include "_navbar.html" %}
-{% endblock navbar %}
-    {% block content %}
-
-    {%with messages = get_flashed_messages(with_categories=true)%}
+<body style="background-color: #f9f9f9">
+{%with messages = get_flashed_messages(with_categories=true)%}
     {% if messages%}
     <div style="margin-left:-2.5rem">
         <ul>
@@ -25,11 +19,13 @@
             {% endfor %}
         </ul>
     </div>
-        
     {% endif %}
     {% endwith %}
+    {% block content %}
+    {% block navbar %}
+    {% include "_navbar.html" %}
+    {% endblock navbar %}
     {% block sub_content %}
-    
     {% endblock sub_content %}
     {% block footer %}
     {% include "_footer.html" %}
@@ -40,7 +36,5 @@
       crossorigin="anonymous"
     ></script>
     {% endblock content %}
-   
-
 </body>
 </html>

@@ -1,4 +1,4 @@
- <nav class="navbar navbar-expand-lg navbar-light bg-dark-subtle" style="padding: 0 22px !important">
+ <nav class="navbar navbar-expand-lg bg-dark navbar-dark" style="padding: 0 22px !important">
 
   <a class="navbar-brand" href="/">Учебный магазин</a>
 
@@ -24,28 +24,26 @@
 
     </ul>
     <ul class="navbar-nav ms-auto">
-      <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Категории
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            {% for cat in cats %}
-            <li><a class="dropdown-item" href="{{ url_for('products', cat=cat) }}">{{cat}}</a></li>
-            {% endfor %}
-          </ul>
+      {% if cats %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Категории
+            </a>
+            
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              {% for cat in cats %}
+              <li><a class="dropdown-item" href="{{ url_for('products', cat=cat) }}">{{cat}}</a></li>
+              {% endfor %}
+            </ul>
+            
+          </li>
+          {% endif %}
+          {% if session.login %}
+        <li class="nav-item ml-auto">
+          <a class="nav-link" href="/logout">Выйти</a>
         </li>
-    {% if session.login %}
-      <li class="nav-item ml-auto">
-        <a class="nav-link" href="/logout">Выйти</a>
-      </li>
-    {% else %}   
-      <li class="nav-item">
-        <a class="nav-link" href="/register">Зарегистрироваться</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/login">Войти</a>
-      </li>
-      {% endif %}
+    
+          {% endif %}
     </ul>
   </div>
 </nav>

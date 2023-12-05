@@ -1,7 +1,7 @@
 # python3 -m venv venv
 # source venv/bin/activate
 
-from flask import Flask, render_template, flash, session, request, redirect, url_for
+from flask import Flask, render_template, flash, session, request, redirect
 from flask_bootstrap import Bootstrap5
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
@@ -13,7 +13,7 @@ bootstrap = Bootstrap5(app)
 
 SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
     username="root",
-    password="password!",
+    password="Mm664856!",
     hostname="localhost",
     databasename="shop",
 )
@@ -77,7 +77,7 @@ def index():
 
 @app.route('/products/<cat>')
 @login_required
-def products(cat):
+def products(cat=None):
     products = Product.query.all()
     cats = set([cat.category for cat in products])
     filtered_products = products = Product.query.filter(
@@ -120,8 +120,8 @@ def register():
         else:
             user = User(
                 username=request.form["username"],
-                first_name=request.form["firstname"],
-                last_name=request.form["lastname"],
+                # first_name=request.form["firstname"],
+                # last_name=request.form["lastname"],
                 email=request.form["email"],
                 password=generate_password_hash(request.form["password"]),
             )
